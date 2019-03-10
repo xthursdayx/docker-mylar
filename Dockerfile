@@ -1,9 +1,6 @@
 # set base os
 FROM lsiobase/alpine.python:3.9
 
-# Set correct environment variables
-ENV HOME /root
-
 # Configure user nobody to match unRAID's settings
 RUN \
 usermod -u 99 nobody && \
