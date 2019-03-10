@@ -53,7 +53,7 @@ RUN \
 	
 #change ownership on app
 RUN chown -R nobody:users \
-	/app
+	/app \
 	/config
 
 # Add mylar to runit
