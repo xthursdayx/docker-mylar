@@ -47,7 +47,7 @@ COPY root/ /
 
 # ports and volumes
 VOLUME /config /comics /downloads
-EXPOSE 8091
+EXPOSE 8090
 
 # Copy out the auto processing scripts to the config directory
 RUN \
