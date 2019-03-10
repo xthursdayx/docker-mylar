@@ -1,7 +1,6 @@
 # set base os
 FROM lsiobase/alpine.python:3.9
 
-# Configure user nobody to match unRAID's settings
 RUN \
 usermod -u 99 nobody && \
 usermod -g 100 nobody && \
@@ -12,8 +11,6 @@ chown -R nobody:users /home
 ARG BUILD_DATE
 ARG VERSION
 ARG MYLAR_COMMIT
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="xthursdayx"
 
 RUN \
  echo "**** install system packages ****" && \
@@ -52,9 +49,9 @@ RUN \
 	cp /app/mylar/*.csv /config/
 	
 #change ownership on app
-RUN chown -R nobody:users \
-	/app \
-	/config
+RUN \
+	chown -R nobody:users /app && \
+	chown -R nobody:users /config
 
 # Add mylar to runit
 RUN mkdir /etc/service/mylar
