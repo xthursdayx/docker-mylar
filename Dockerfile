@@ -6,8 +6,8 @@ ENV HOME /root
 
 # Configure user nobody to match unRAID's settings
 RUN \
-usermod -u 99 nobody && \u
-sermod -g 100 nobody && \
+usermod -u 99 nobody && \
+usermod -g 100 nobody && \
 usermod -d /home nobody && \
 chown -R nobody:users /home
 
