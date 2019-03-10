@@ -8,6 +8,6 @@ mkdir -p /config/{mylar,scripts}
 	cp -pr /app/mylar/post-processing/* /config/scripts/
 
 # permissions
-chown -R abc:abc \
+chown -R nobody:users \
 	/app \
 	/config
