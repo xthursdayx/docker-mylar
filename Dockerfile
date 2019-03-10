@@ -46,13 +46,4 @@ EXPOSE 8090
 
 # Copy out the auto processing scripts to the config directory
 RUN \
-	cp -R /app/mylar/post-processing/ /config/ && \
 	cp /app/mylar/*.csv /config/
-	
-#change ownership on app
-RUN \
-	chown -R nobody:users /app && \
-	chown -R nobody:users /config && \
-	s6-setuidgid nobody python /app/mylar/Mylar.py --quiet --nolaunch \
-	--datadir=/config
-	
