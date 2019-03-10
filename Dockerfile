@@ -5,7 +5,7 @@ ARG BUILD_DATE
 ARG VERSION
 ARG MYLAR_COMMIT
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="sparklyballs"
+LABEL maintainer="xthursdayx"
 
 RUN \
  echo "**** install system packages ****" && \
@@ -20,7 +20,7 @@ RUN \
 	tzlocal && \
  echo "**** install app ****" && \
  if [ -z ${MYLAR_COMMIT+x} ]; then \
-	MYLAR_COMMIT=$(curl -sX GET https://api.github.com/repos/evilhero/mylar/commits/master \
+	MYLAR_COMMIT=$(curl -sX GET https://api.github.com/repos/evilhero/mylar/commits/development \
 	| awk '/sha/{print $4;exit}' FS='[""]'); \
  fi && \
  git clone https://github.com/evilhero/mylar.git /app/mylar && \
@@ -36,4 +36,4 @@ COPY root/ /
 
 # ports and volumes
 VOLUME /config /comics /downloads
-EXPOSE 8090
+EXPOSE 8091
