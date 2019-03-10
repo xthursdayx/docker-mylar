@@ -52,4 +52,6 @@ RUN \
 RUN \
 	chown -R nobody:users /app && \
 	chown -R nobody:users /config &&\
-	/sbin/setuser nobody python /app/mylar/Mylar.py --datadir=/config
+	s6-setuidgid nobody python /app/mylar/Mylar.py --quiet --nolaunch \
+	--datadir=/config
+	
