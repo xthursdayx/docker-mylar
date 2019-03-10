@@ -10,14 +10,14 @@ pipeline {
   environment {
     BUILDS_DISCORD=credentials('build_webhook_url')
     GITHUB_TOKEN=credentials('498b4638-2d02-4ce5-832d-8a57d01d97ab')
-    EXT_GIT_BRANCH = 'master'
+    EXT_GIT_BRANCH = 'development'
     EXT_USER = 'evilhero'
     EXT_REPO = 'mylar'
     BUILD_VERSION_ARG = 'MYLAR_COMMIT'
-    LS_USER = 'linuxserver'
+    LS_USER = 'xthursdayx'
     LS_REPO = 'docker-mylar'
     CONTAINER_NAME='mylar'
-    DOCKERHUB_IMAGE = 'linuxserver/mylar'
+    DOCKERHUB_IMAGE = 'xthursdayx/mylar'
     DEV_DOCKERHUB_IMAGE = 'lsiodev/mylar'
     PR_DOCKERHUB_IMAGE = 'lspipepr/mylar'
     DIST_IMAGE = 'alpine'
@@ -27,7 +27,7 @@ pipeline {
     CI_PORT='8090'
     CI_SSL='false'
     CI_DELAY='120'
-    CI_DOCKERENV='TZ=US/Pacific'
+    CI_DOCKERENV='TZ=US/New_York'
     CI_AUTH='user:password'
     CI_WEBPATH=''
   }
