@@ -52,8 +52,3 @@ RUN \
 RUN \
 	chown -R nobody:users /app && \
 	chown -R nobody:users /config
-
-# Add mylar to runit
-RUN mkdir /etc/service/mylar
-ADD mylar.sh /etc/service/mylar/run
-RUN chmod +x /etc/service/mylar/run
