@@ -2,4 +2,4 @@
 
 exec \
 	s6-setuidgid abc python /app/mylar/Mylar.py --quiet --nolaunch \
-	--datadir /config/mylar
+	--datadir /config/
