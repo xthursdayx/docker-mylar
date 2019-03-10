@@ -1,4 +1,15 @@
+# set base os
 FROM lsiobase/alpine.python:3.9
+
+# Set correct environment variables
+ENV HOME /root
+
+# Configure user nobody to match unRAID's settings
+RUN \
+usermod -u 99 nobody && \u
+sermod -g 100 nobody && \
+usermod -d /home nobody && \
+chown -R nobody:users /home
 
 # set version label
 ARG BUILD_DATE
@@ -23,7 +34,7 @@ RUN \
 	MYLAR_COMMIT=$(curl -sX GET https://api.github.com/repos/evilhero/mylar/commits/development \
 	| awk '/sha/{print $4;exit}' FS='[""]'); \
  fi && \
- git clone https://github.com/evilhero/mylar.git /app/mylar && \
+ git clone https://github.com/evilhero/mylar.git -b development /app/mylar && \
  cd /app/mylar && \
  git checkout ${MYLAR_COMMIT} && \
  echo "**** cleanup ****" && \
@@ -37,3 +48,16 @@ COPY root/ /
 # ports and volumes
 VOLUME /config /comics /downloads
 EXPOSE 8091
+
+# Copy out the auto processing scripts to the config directory
+RUN \
+	cp -R /app/mylar/post-processing/ /config/ && \
+	cp /app/mylar/*.csv /config/
+	
+#change ownership on app
+RUN chown -R nobody:users /app
+
+# Add mylar to runit
+RUN mkdir /etc/service/mylar
+ADD mylar.sh /etc/service/mylar/run
+RUN chmod +x /etc/service/mylar/run
