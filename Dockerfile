@@ -55,7 +55,9 @@ RUN \
 	cp /app/mylar/*.csv /config/
 	
 #change ownership on app
-RUN chown -R nobody:users /app
+RUN chown -R nobody:users \
+	/app
+	/config
 
 # Add mylar to runit
 RUN mkdir /etc/service/mylar
