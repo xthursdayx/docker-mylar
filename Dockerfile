@@ -51,7 +51,7 @@ RUN \
 #change ownership on app
 RUN \
 	chown -R nobody:users /app && \
-	chown -R nobody:users /config &&\
+	chown -R nobody:users /config && \
 	s6-setuidgid nobody python /app/mylar/Mylar.py --quiet --nolaunch \
 	--datadir=/config
 	
