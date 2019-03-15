@@ -7,11 +7,6 @@ usermod -g 100 nobody && \
 usermod -d /home nobody && \
 chown -R nobody:users /home
 
-# set version label
-ARG BUILD_DATE
-ARG VERSION
-ARG MYLAR_COMMIT
-
 RUN \
  echo "**** install system packages ****" && \
  apk add --no-cache \
@@ -24,13 +19,8 @@ RUN \
 	html5lib \
 	tzlocal && \
  echo "**** install app ****" && \
- if [ -z ${MYLAR_COMMIT+x} ]; then \
-	MYLAR_COMMIT=$(curl -sX GET https://api.github.com/repos/evilhero/mylar/commits/development \
-	| awk '/sha/{print $4;exit}' FS='[""]'); \
- fi && \
  git clone https://github.com/evilhero/mylar.git -b development /app/mylar && \
  cd /app/mylar && \
- git checkout ${MYLAR_COMMIT} && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/root/.cache \
