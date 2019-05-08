@@ -17,6 +17,7 @@ RUN \
 	comictagger \
 	configparser \
 	html5lib \
+	requests \
 	tzlocal && \
  echo "**** install app ****" && \
  git clone https://github.com/evilhero/mylar.git -b development /app/mylar && \
