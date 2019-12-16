@@ -5,7 +5,7 @@ mkdir -p /config/{mylar,scripts}
 
 # copy scripts folder to config
 [[ ! -d /config/scripts/sabnzbd ]] && \
-	cp -pr /app/mylar/post-processing/* /config/scripts/
+cp -pr /app/mylar/post-processing/* /config/scripts/
 
 # permissions
 chown -R nobody:users \
