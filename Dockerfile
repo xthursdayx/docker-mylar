@@ -1,5 +1,5 @@
 # set base os
-FROM lsiobase/python:3.10
+FROM lsiobase/python:3.11
 
 RUN \
 usermod -u 99 nobody && \
